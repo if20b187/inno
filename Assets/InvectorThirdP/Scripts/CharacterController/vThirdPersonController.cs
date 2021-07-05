@@ -37,6 +37,19 @@ namespace Invector.vCharacterController
             if (!useRootMotion)
                 MoveCharacter(moveDirection);
         }
+        
+        public virtual void SetSprintSpeed(float x)
+        {
+            freeSpeed.sprintSpeed = x;
+        }
+        public virtual void SetJumpHeight(float x)
+        {
+            jumpHeight = x;
+        }
+        public virtual void SetAirSpeed(float x)
+        {
+            airSpeed = x;
+        }
 
         public virtual void ControlRotationType()
         {

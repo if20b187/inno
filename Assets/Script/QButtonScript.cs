@@ -36,6 +36,7 @@ public class QButtonScript : MonoBehaviour
         completeButton.SetActive(false);
 
     }*/
+    
 
     //JULIAN 
     public void OnToggleDebug()
@@ -145,4 +146,5 @@ public class QButtonScript : MonoBehaviour
     {
         QuestUIManager.uiManager.ToggleActiveBPanel();
     }
+    
 }

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class GoalScript : MonoBehaviour
 {
+    
+
     void OnTriggerEnter(Collider other)
     {
-        //QuestManager.questManager.AddQuestItem("Neue", 1);
-        QuestManager.questManager.AddQuestItem("Ziel", 1);
+        
+        QuestManager.questManager.AddQuestItem("Goal1", 1);
+      
+
     }
 }

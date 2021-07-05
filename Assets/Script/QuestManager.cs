@@ -10,10 +10,13 @@ public class QuestManager : MonoBehaviour
     public List <Quest> questList = new List<Quest>(); //MASTER QUESTLIST
     public List <Quest> currentList = new List<Quest>();
 
+    
+
 
     //private var for our Questobject
     void Awake()
     {
+
         if (questManager == null)
         {
             questManager = this;
@@ -22,7 +25,7 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void QuestRequest(QuestObject NPCQuestObject) 

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     Question[] _questions = null;
     public Question[] Questions { get { return _questions; } }
 
+    public GameObject rest;
+
     [SerializeField] GameEvents events = null;
 
     //[SerializeField] Animator timeAnimator = null;
@@ -30,6 +32,16 @@ public class GameManager : MonoBehaviour
         {
             return (FinishedQuestions.Count < Questions.Length) ? false : true;
         }
+    }
+
+    public GameManager()
+    {
+        _questions = null;
+        PickedAnswers = new List<AnswerData>();
+        FinishedQuestions = new List<int>();
+        currentQuestion = 0;
+        IE_WaitTillNextRound = null;
+
     }
 
     void OnEnable()
@@ -240,7 +252,7 @@ public class GameManager : MonoBehaviour
     public void QuitGame ()
     {
         SceneManager.LoadScene(0);
-        Application.Quit();
+        //Application.Quit();
     }
 
     private void SetHighScore ()

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.vCharacterController;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager spawnManager;
 
+    public GameObject player;
     public GameObject car;
     public GameObject plane;
     public GameObject ball;
@@ -51,9 +53,28 @@ public class SpawnManager : MonoBehaviour
             case "spawnBox()":
                 Instantiate(box, new Vector3(spawnLocationDirekt.transform.position.x, spawnLocationDirekt.transform.position.y, spawnLocationDirekt.transform.position.z), Quaternion.identity);
                 break;
+            case "runFaster()":
+                player.GetComponent<vThirdPersonController>().SetSprintSpeed(12f);
+                break;
+            case "runNormal()":
+                player.GetComponent<vThirdPersonController>().SetSprintSpeed(6f);
+                break;
+            case "jumpNormal()":
+                player.GetComponent<vThirdPersonController>().SetJumpHeight(4f);
+                break;
+            case "jumpHigher()":
+                player.GetComponent<vThirdPersonController>().SetJumpHeight(8f);
+                break;
+            case "JumpSpeedFaster()":
+                player.GetComponent<vThirdPersonController>().SetAirSpeed(10f);
+                break;
+            case "JumpSpeedNormal()":
+                player.GetComponent<vThirdPersonController>().SetAirSpeed(5f);
+                break;
             default:
                 Debug.Log("False Input!");
                 break;
+
         }
 
         /*

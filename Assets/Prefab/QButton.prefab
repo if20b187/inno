@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 3774977282293980944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 2409156981399671612}
   m_Father: {fileID: 0}
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: 0
   questTitle: {fileID: 1489976548856215388}
+  showConsole: 0
+  input: 
 --- !u!1 &4340498561392987362
 GameObject:
   m_ObjectHideFlags: 0

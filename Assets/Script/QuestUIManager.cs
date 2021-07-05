@@ -14,6 +14,8 @@ public class QuestUIManager : MonoBehaviour
     public bool questPanelActive = false;
     public bool questLogPanelActive = false;
     public bool buchPanelActive = false;
+    
+
 
     //BOOLS FOR CAM
     public bool AnyPanelActive = false;
@@ -64,8 +66,13 @@ public class QuestUIManager : MonoBehaviour
     //public QButtonScript giveUpButtonScript;
     public QButtonScript completeButtonScript;
 
+
+    
+
     void Start()
     {
+        Player = GameObject.FindWithTag("Player");
+        PersonCam = GameObject.FindWithTag("MainCamera");
         acceptButton = GameObject.Find("QuestCanvas").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("GameObject").transform.Find("Accept").gameObject;
         acceptButtonScript = acceptButton.GetComponent<QButtonScript>();
 
@@ -85,12 +92,24 @@ public class QuestUIManager : MonoBehaviour
 
         questLogTitle.text = "";
         questLogDescription.text = "";
-        questLogSummary.text = "";
+        questLogSummary.text = " ";
 
     }
     void Awake()
     {
-        if(uiManager == null)
+        /*
+        if(Player == null)
+        {
+            Player = GameObject.Find("Player").gameObject;
+        }
+        if (PersonCam == null)
+        {
+            Player = GameObject.Find("vThirdPersonCamera").gameObject;
+        }
+        */
+        
+
+        if (uiManager == null)
         {
             uiManager = this;
         }else if (uiManager != this)
@@ -98,7 +117,8 @@ public class QuestUIManager : MonoBehaviour
             Destroy(gameObject);
 
         }
-        DontDestroyOnLoad(gameObject);
+        
+
         HideQuestPanel();
         
     }
@@ -110,6 +130,12 @@ public class QuestUIManager : MonoBehaviour
         //bool questPanelActive = false;
         //public bool questLogPanelActive = false;
         //public bool buchPanelActive = false;
+        if(Player == null)
+        {
+            Player = GameObject.FindWithTag("Player");
+            PersonCam = GameObject.FindWithTag("MainCamera");
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -129,6 +155,7 @@ public class QuestUIManager : MonoBehaviour
             HideQuestPanel();
             HideQuestLogPanel();
             HideBuchPanel();
+
             endlockCam();
 
 
@@ -149,18 +176,26 @@ public class QuestUIManager : MonoBehaviour
 
     public void lockCam()
     {
+        
         GameObject varGameObject = GameObject.FindWithTag("Player");
-        varGameObject.GetComponent<vThirdPersonInput>().enabled = false;
-        varGameObject.GetComponent<Animator>().enabled = false;
-        PersonCam.GetComponent<vThirdPersonCamera>().lockCamera = true;
+        if(varGameObject != null)
+        {
+            varGameObject.GetComponent<vThirdPersonInput>().enabled = false;
+            varGameObject.GetComponent<Animator>().enabled = false;
+            PersonCam.GetComponent<vThirdPersonCamera>().lockCamera = true;
+        }
+        
     }
 
     public void endlockCam()
     {
         GameObject varGameObject = GameObject.FindWithTag("Player");
-        varGameObject.GetComponent<vThirdPersonInput>().enabled = true;
-        varGameObject.GetComponent<Animator>().enabled = true;
-        PersonCam.GetComponent<vThirdPersonCamera>().lockCamera = false;
+        if (varGameObject != null)
+        {
+            varGameObject.GetComponent<vThirdPersonInput>().enabled = true;
+            varGameObject.GetComponent<Animator>().enabled = true;
+            PersonCam.GetComponent<vThirdPersonCamera>().lockCamera = false;
+        }
     }
 
     
@@ -178,7 +213,8 @@ public class QuestUIManager : MonoBehaviour
         buchPanel.SetActive(buchPanelActive);
         lockCam();
     }
-   
+    
+
     public void CheckQuests(QuestObject questObject)
     {
         currentQuestObject = questObject;

@@ -210,4 +210,5 @@ public class UIManager : MonoBehaviour
     {
         uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
     }
+
 }
